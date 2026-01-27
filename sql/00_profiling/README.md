@@ -1,16 +1,11 @@
-## Dimension Tables
+## Data Profiling & Quality Checks
 
-This folder contains dimension table logic used across the analytics model.
+This folder contains SQL scripts used to profile raw and transformed data before modeling.
 
-Dimensions are designed to:
-- Standardize descriptive attributes
-- Support consistent joins across fact tables
-- Reduce duplication in downstream reporting
+These queries focus on:
+- Row counts and volume checks
+- Null, blank, and duplicate detection
+- Basic sanity checks on key fields
+- Early identification of data quality risks
 
-Current dimensions include:
-- Specialty
-- Region
-- Recruiter
-
-Dimension logic emphasizes clean keys, trimmed text fields, and defensible grain.  
-Additional dimensions may be added as the model evolves.
+Profiling outputs inform downstream modeling decisions and help ensure that dimensions and fact tables are built on reliable inputs.
