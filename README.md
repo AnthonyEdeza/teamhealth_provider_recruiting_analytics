@@ -1,5 +1,5 @@
 # 🏥 Healthcare Data Analytics – Data Quality & Engagement Analysis  
-### SQL-Based Validation and Exploratory Analysis (In Progress)
+### SQL-Based Data Quality, Dimensional Modeling, and Exploratory Analysis (In Progress)
 
 **Tech Stack:** SQL  
 
@@ -30,8 +30,9 @@ This project applies a **SQL-first analytics workflow** commonly used in product
 
 1. Perform **data quality checks** (nulls, duplicates, completeness).  
 2. Validate **event sequences and timelines** for logical consistency.  
-3. Investigate **basic engagement-related patterns** to identify anomalies.  
-4. Document assumptions and known data limitations.
+3. Build **core dimension tables** to standardize reporting attributes.  
+4. Develop **foundational fact logic** to support enterprise-level health assessment.  
+5. Document assumptions and known data limitations.
 
 The focus is on **accuracy, interpretability, and analytical discipline**, not advanced modeling.
 
@@ -41,9 +42,11 @@ The focus is on **accuracy, interpretability, and analytical discipline**, not a
 
 | Stage | Purpose | Tools |
 |------|--------|------|
-| Data Validation | Null, duplicate, completeness checks | SQL |
-| Timeline Analysis | Sequence and logic validation | SQL |
-| Pattern Investigation | Basic trend exploration | SQL |
+| Data Profiling | Volume, null, duplicate checks | SQL |
+| Data Validation | Timeline and logic verification | SQL |
+| Dimensional Modeling | Standardized descriptive attributes | SQL |
+| Fact Development | Foundational enterprise health metrics | SQL |
+
 
 ---
 
@@ -56,14 +59,27 @@ The focus is on **accuracy, interpretability, and analytical discipline**, not a
 
 ---
 
+## 🧱 SQL Analytics Layer
+
+The SQL layer is organized to reflect a realistic analytics workflow, including:
+- Data profiling and validation
+- Dimension table construction
+- Early-stage fact table development
+
+SQL files are added incrementally as logic is developed and validated.
+
+---
+
 ## 📊 Current Status
 
 | Component | Status |
 |--------|--------|
-| Data quality checks | Complete |
-| Timeline validation | Complete |
-| Engagement analysis | In progress |
+| Data profiling & quality checks | Complete |
+| Core dimensions | Complete |
+| Enterprise health fact | In progress |
+| Engagement analysis | Planned |
 | Insight summary | Planned |
+
 
 This repository is intentionally **work in progress** and will continue to evolve.
 
