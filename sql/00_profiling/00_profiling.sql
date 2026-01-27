@@ -11,7 +11,7 @@ USE teamHealthProjectDB
 /* =========================================================
    Section 1: Row counts by table
    Purpose: Confirm load completeness and get a quick sense of scale.
-   Status: Complete
+   Status: Completed
    Notes:
     - dim_date appears non-viable in this dataset 
         (it duplicates dim_facility columns and has no date key).
