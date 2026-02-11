@@ -10,7 +10,7 @@ This project focuses on analyzing **healthcare-style datasets** to assess **data
 
 The primary objective is to validate whether the data is reliable enough to support downstream analysis and client-facing reporting.
 
-This project is part of my transition into a **Client Data Analyst** role, with an emphasis on healthcare-adjacent analytics and real-world data challenges.
+This project is part of my transition into a **Data Analyst** role, with an emphasis on healthcare-adjacent analytics and real-world data challenges.
 
 ---
 
