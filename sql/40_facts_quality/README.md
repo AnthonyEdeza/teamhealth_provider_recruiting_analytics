@@ -1,5 +1,5 @@
 # 40_fact_quality_stability.sql
-
+ 
 ## Purpose
 
 This fact table measures recruiting outcome quality and stability at a monthly level by source.
