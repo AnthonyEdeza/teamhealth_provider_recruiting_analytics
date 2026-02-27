@@ -1,40 +1,61 @@
-# 🏥 Healthcare Data Analytics – Data Quality & Engagement Analysis  
-### SQL-Based Data Quality, Dimensional Modeling, and Exploratory Analysis (In Progress)
+# 🏥 Healthcare Data Analytics – Data Quality & Performance Analytics  
+### SQL Data Profiling, Dimensional Modeling, and Executive KPI Fact Tables (In Progress)
 
-**Tech Stack:** SQL  
+**Tech Stack:** SQL (SSMS / SQL Server)  
+**Focus:** data quality validation + decision-ready reporting marts
 
 ---
 
 ## 🔍 Executive Summary
-This project focuses on analyzing **healthcare-style datasets** to assess **data quality, timeline validity, and engagement-related patterns** commonly encountered in healthcare analytics environments.
+This project uses a **healthcare-style recruiting/workforce dataset** to demonstrate an end-to-end, SQL-first analytics workflow:
 
-The primary objective is to validate whether the data is reliable enough to support downstream analysis and client-facing reporting.
+- Validate data readiness (nulls, duplicates, timeline logic, join integrity)
+- Build conformed dimensions for consistent reporting
+- Produce monthly, dashboard-ready fact tables that answer executive questions around:
+  - enterprise recruiting health
+  - staffing risk and bottlenecks
+  - spend effectiveness (ROI)
+  - quality and stability (attrition + offer declines)
+  - recruiter capacity constraints
 
-This project is part of my transition into a **Data Analyst** role, with an emphasis on healthcare-adjacent analytics and real-world data challenges.
+The emphasis is on **accuracy, traceability, and defensible KPI logic**.
+
+This project supports my transition into a **Data Analyst** role, with healthcare-adjacent analytics patterns and real-world data challenges.
 
 ---
 
 ## 💼 Business Problem
-Healthcare datasets often contain:
+Healthcare and healthcare-adjacent analytics datasets often contain:
 - Missing or inconsistently populated fields  
 - Duplicate or conflicting records  
 - Event timelines that do not follow logical sequences  
+- Metrics that can be misinterpreted if definitions are not controlled
 
-Without proper validation, reporting and insights can be misleading.  
-This project addresses the early-stage analytics problem of determining **data readiness and integrity** before insights are shared.
+Without validation and consistent definitions, reporting can be misleading.  
+This project addresses the early-stage analytics problem of determining **data readiness and metric defensibility** before insights are shared.
 
 ---
 
 ## 💡 Solution
-This project applies a **SQL-first analytics workflow** commonly used in production environments:
+This repository follows a practical SQL workflow used in analytics teams:
 
-1. Perform **data quality checks** (nulls, duplicates, completeness).  
-2. Validate **event sequences and timelines** for logical consistency.  
-3. Build **core dimension tables** to standardize reporting attributes.  
-4. Develop **foundational fact logic** to support enterprise-level health assessment.  
-5. Document assumptions and known data limitations.
+1. **Profile and validate source data**  
+   - volume, null rates, duplicate checks  
+   - date coverage and timeline sanity checks  
+   - orphan (FK-style) checks and join integrity  
 
-The focus is on **accuracy, interpretability, and analytical discipline**, not advanced modeling.
+2. **Create conformed dimensions**  
+   - standardize reporting axes (specialty, region, recruiter)  
+   - include explicit `Unknown` handling where needed  
+
+3. **Build reporting fact tables** (dashboard-ready marts)  
+   - monthly enterprise health metrics  
+   - staffing risk and backlog aging  
+   - spend effectiveness by source/campaign  
+   - quality + stability by source (attrition + declines)  
+   - recruiter workload vs capacity targets  
+
+The focus is **analytical discipline**, not advanced modeling.
 
 ---
 
@@ -42,31 +63,52 @@ The focus is on **accuracy, interpretability, and analytical discipline**, not a
 
 | Stage | Purpose | Tools |
 |------|--------|------|
-| Data Profiling | Volume, null, duplicate checks | SQL |
-| Data Validation | Timeline and logic verification | SQL |
-| Dimensional Modeling | Standardized descriptive attributes | SQL |
-| Fact Development | Foundational enterprise health metrics | SQL |
-
+| Data Profiling | volume, null, duplicate checks | SQL |
+| Data Validation | timeline and logic verification | SQL |
+| Dimensional Modeling | conformed reporting attributes | SQL |
+| Fact Development | KPI marts for reporting | SQL |
 
 ---
 
 ## ⚙️ Key Features
-- **SQL-Based Data Quality Checks**  
-- **Timeline and Sequence Validation**  
-- **Healthcare-Style Engagement Data Context**  
-- **Clear, Structured Query Logic**  
-- **Production-Oriented Validation Approach**
+- **SQL-based data quality checks** (nulls, duplicates, PK/FK integrity)
+- **Timeline and sequence validation** for recruiting lifecycle events
+- **Conformed dimensions** (specialty, region, recruiter) to prevent slicer fragmentation
+- **Monthly KPI marts** designed for Power BI dashboards
+- **Clear assumptions + validation outputs** included in each build file
 
 ---
 
-## 🧱 SQL Analytics Layer
+## 🧱 SQL Analytics Layer (Project Structure)
 
-The SQL layer is organized to reflect a realistic analytics workflow, including:
-- Data profiling and validation
-- Dimension table construction
-- Early-stage fact table development
+The SQL layer is organized as a reproducible pipeline:
 
-SQL files are added incrementally as logic is developed and validated.
+### Foundation
+- `00_profiling.sql`  
+  Baseline profiling, timeline validity checks, PK/duplicate checks, orphan checks, and KPI readiness snapshots.
+
+### Conformed Dimensions
+- `01_dim_specialty.sql`
+- `02_dim_region.sql`
+- `03_dim_recruiter.sql`
+
+### Reporting Fact Tables (Monthly Marts)
+- `10_fact_enterprise_health.sql`  
+  Enterprise health KPIs (open reqs, time-to-fill, offer acceptance, SLA compliance).
+
+- `20_fact_staffing_risk.sql`  
+  Staffing risk indicators by month × region × specialty (aging backlog, threshold breaches, rural vs non-rural).
+
+- `30_fact_spend_effectiveness.sql`  
+  Monthly spend and ROI signals by month × source × campaign (CPA/CPH), linking spend → applications → offers → hires.
+
+- `40_fact_quality_stability.sql`  
+  Monthly outcome quality by source (early attrition ≤90d, offer decline rate) + decline reason breakdown.
+
+- `50_fact_recruiter_capacity.sql`  
+  Monthly recruiter workload vs capacity targets (open reqs, gap, over-capacity flag) with grain validation.
+
+SQL files are built to be rerunnable and include validation queries to confirm expected outputs.
 
 ---
 
@@ -74,29 +116,39 @@ SQL files are added incrementally as logic is developed and validated.
 
 | Component | Status |
 |--------|--------|
-| Data profiling & quality checks | Complete |
-| Core dimensions | Complete |
-| Enterprise health fact | In progress |
-| Engagement analysis | Planned |
-| Insight summary | Planned |
-
+| Data profiling & quality checks (`00_profiling.sql`) | ✅ Complete |
+| Core dimensions (specialty, region, recruiter) | ✅ Complete |
+| Enterprise health fact (`10_fact_enterprise_health.sql`) | ✅ Complete |
+| Staffing risk fact (`20_fact_staffing_risk.sql`) | ✅ Complete |
+| Spend effectiveness fact (`30_fact_spend_effectiveness.sql`) | ✅ Complete |
+| Quality & stability fact (`40_fact_quality_stability.sql`) | ✅ Complete |
+| Recruiter capacity fact (`50_fact_recruiter_capacity.sql`) | ✅ Complete |
+| Power BI dashboard build | Planned |
+| Insight summary write-up | Planned |
 
 This repository is intentionally **work in progress** and will continue to evolve.
 
 ---
 
 ## 🧠 Skills Demonstrated
-- **SQL Data Validation**
-- **Data Quality Assessment**
-- **Analytical Reasoning**
-- **Healthcare-Adaptive Analytics Thinking**
+- SQL data profiling and validation
+- KPI definition and metric defensibility
+- Dimensional modeling fundamentals (conformed dimensions, grain control)
+- Join integrity / orphan detection
+- Reporting mart design for dashboards
+- Analytics reasoning and documentation
 
 ---
 
 ## 🧭 Next Steps
-- Expand engagement pattern analysis  
-- Add summary findings and interpretations  
-- Introduce visual outputs once data is validated  
+- Build a Power BI dashboard aligned to the executive layout:
+  - Enterprise Health
+  - Staffing Risk & Bottlenecks
+  - Spend Effectiveness
+  - Stability & Quality
+  - Recruiter Capacity
+- Add an insights summary page with key findings and recommended actions
+- Include screenshots of final visuals in this README
 
 ---
 
@@ -113,10 +165,9 @@ This repository exists solely for **educational and portfolio demonstration** pu
 ---
 
 ### 💬 Recruiter Note
-This project demonstrates **data validation discipline** and **analytics judgment**, which are critical for client-facing healthcare analytics roles.
+This project demonstrates **data validation discipline** and **analytics judgment**, including defensible KPI logic and reporting-ready SQL marts that support executive decision-making.
 
 ---
 
 ### 🏁 Summary
-> This project focuses on validating data before insights are produced — a foundational responsibility of effective data analysts.
-
+> This project focuses on validating data and producing defensible KPI marts before insights are shared — a foundational responsibility of effective data analysts.
