@@ -123,10 +123,66 @@ SQL files are built to be rerunnable and include validation queries to confirm e
 | Spend effectiveness fact (`30_fact_spend_effectiveness.sql`) | ✅ Complete |
 | Quality & stability fact (`40_fact_quality_stability.sql`) | ✅ Complete |
 | Recruiter capacity fact (`50_fact_recruiter_capacity.sql`) | ✅ Complete |
-| Power BI dashboard build | Planned |
+| Power BI dashboard build | 🚧 In Progress (Executive Page Completed)
 | Insight summary write-up | Planned |
 
 This repository is intentionally **work in progress** and will continue to evolve.
+
+---
+
+## 📊 Executive Dashboard (Power BI – In Progress)
+
+### Overview
+Built an executive-facing Power BI dashboard to monitor provider recruiting performance across five key areas:
+
+- Enterprise health (volume, efficiency, conversion, SLA performance)
+- Staffing risk and backlog pressure
+- Spend efficiency and cost signals
+- Source channel effectiveness (paid vs non-paid)
+- Agency reliance and external dependency
+
+The dashboard is designed for quarterly business reviews (QBRs) and supports fast, high-level decision-making.
+
+---
+
+### Key KPIs (Leadership View)
+- Open Requisitions  
+- Median Time-to-Fill (days)  
+- Offer Acceptance Rate  
+- SLA Compliance %  
+- Cost per Hire (latest non-blank)  
+- Agency Reliance %  
+
+---
+
+### Key Insights (Current Snapshot)
+- Backlog continues to grow, with rising time-to-fill indicating increasing operational strain  
+- Certain specialties (e.g., Hospital Medicine, Post-Acute Care) show elevated risk levels  
+- Hiring volume is primarily driven by non-paid channels (Direct, CRM, Referral)  
+- Agency reliance remains low (~4.7%), indicating strong internal sourcing capability  
+- Cost per hire remains stable but should be monitored alongside volume trends  
+
+---
+
+### Design Approach
+- Prioritized clarity over density for executive readability  
+- Used fixed reporting snapshot (Mar 2026) to ensure consistency  
+- Structured layout to answer:
+  - Are we winning or falling behind?
+  - Where is risk concentrated?
+  - Are we spending efficiently?
+  - Are we dependent on external agencies?
+
+---
+
+### Notes
+- This dashboard is built on SQL-generated KPI marts  
+- Data is synthetic and static (no live refresh)  
+- Additional pages will expand into deeper analysis per business question  
+
+---
+
+![Executive Dashboard](images/executive_dashboard_overview.jpg)
 
 ---
 
