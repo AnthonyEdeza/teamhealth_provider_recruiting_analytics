@@ -182,7 +182,7 @@ The dashboard is designed for quarterly business reviews (QBRs) and supports fas
 
 ---
 
-![Executive Dashboard](images/executive_dashboard_overview.jpg)
+![Executive Dashboard](images/provider-recruiting-performance-risk-overview.jpg)
 
 ---
 
